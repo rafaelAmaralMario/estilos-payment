@@ -15,7 +15,8 @@
         "fruitcake/laravel-cors": "*",
         "guzzlehttp/guzzle": "*",
         "laravel/framework": "*",
-        "laravel/tinker": "*"
+        "laravel/tinker": "*",
+        "symfony/polyfill-ctype": "^1.24"
     },
     "require-dev": {
         "facade/ignition": "*",
