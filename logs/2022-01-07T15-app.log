@@ -1,0 +1,30 @@
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T18:07:14.763Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T18:34:42.240Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T18:35:12.346Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T18:39:23.277Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T18:40:49.234Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T18:41:48.246Z'
+}

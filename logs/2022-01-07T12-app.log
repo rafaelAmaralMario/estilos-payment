@@ -1,0 +1,319 @@
+{
+  error: /Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/services/niubiz/index.js:129
+       const data = {
+             ^
+  
+  SyntaxError: Identifier 'data' has already been declared
+      at wrapSafe (internal/modules/cjs/loader.js:915:16)
+      at Module._compile (internal/modules/cjs/loader.js:963:27)
+      at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+      at Module.load (internal/modules/cjs/loader.js:863:32)
+      at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+      at Module.require (internal/modules/cjs/loader.js:887:19)
+      at require (internal/modules/cjs/helpers.js:74:18)
+      at Object.<anonymous> (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/index.js:9:12)
+      at Module._compile (internal/modules/cjs/loader.js:999:30)
+      at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10),
+  level: 'error',
+  message: "uncaughtException: Identifier 'data' has already been declared\n" +
+    '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/services/niubiz/index.js:129\n' +
+    '     const data = {\n' +
+    '           ^\n' +
+    '\n' +
+    "SyntaxError: Identifier 'data' has already been declared\n" +
+    '    at wrapSafe (internal/modules/cjs/loader.js:915:16)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:963:27)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)\n' +
+    '    at Module.load (internal/modules/cjs/loader.js:863:32)\n' +
+    '    at Function.Module._load (internal/modules/cjs/loader.js:708:14)\n' +
+    '    at Module.require (internal/modules/cjs/loader.js:887:19)\n' +
+    '    at require (internal/modules/cjs/helpers.js:74:18)\n' +
+    '    at Object.<anonymous> (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/index.js:9:12)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:999:30)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)',
+  stack: '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/services/niubiz/index.js:129\n' +
+    '     const data = {\n' +
+    '           ^\n' +
+    '\n' +
+    "SyntaxError: Identifier 'data' has already been declared\n" +
+    '    at wrapSafe (internal/modules/cjs/loader.js:915:16)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:963:27)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)\n' +
+    '    at Module.load (internal/modules/cjs/loader.js:863:32)\n' +
+    '    at Function.Module._load (internal/modules/cjs/loader.js:708:14)\n' +
+    '    at Module.require (internal/modules/cjs/loader.js:887:19)\n' +
+    '    at require (internal/modules/cjs/helpers.js:74:18)\n' +
+    '    at Object.<anonymous> (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/index.js:9:12)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:999:30)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)',
+  exception: true,
+  date: 'Fri Jan 07 2022 12:06:29 GMT-0300 (GMT-03:00)',
+  process: {
+    pid: 24610,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment',
+    execPath: '/Users/rafael/.asdf/installs/nodejs/12.22.1/bin/node',
+    version: 'v12.22.1',
+    argv: [
+      '/Users/rafael/.asdf/installs/nodejs/12.22.1/bin/node',
+      '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/index.js'
+    ],
+    memoryUsage: {
+      rss: 47202304,
+      heapTotal: 18956288,
+      heapUsed: 11220304,
+      external: 1478620,
+      arrayBuffers: 133113
+    }
+  },
+  os: {
+    loadavg: [ 3.18798828125, 1.919921875, 1.5751953125 ],
+    uptime: 158913
+  },
+  trace: [
+    {
+      column: 16,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'wrapSafe',
+      line: 915,
+      method: null,
+      native: false
+    },
+    {
+      column: 27,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._compile',
+      line: 963,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._extensions..js',
+      line: 1027,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module.load',
+      line: 863,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._load',
+      line: 708,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 19,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module.require',
+      line: 887,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 18,
+      file: 'internal/modules/cjs/helpers.js',
+      function: 'require',
+      line: 74,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/index.js',
+      function: null,
+      line: 9,
+      method: null,
+      native: false
+    },
+    {
+      column: 30,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._compile',
+      line: 999,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._extensions..js',
+      line: 1027,
+      method: '.js',
+      native: false
+    }
+  ],
+  timestamp: '2022-01-07T15:06:29.001Z'
+}
+{
+  error: /Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/services/niubiz/index.js:184
+   await function payment(request) {
+   ^^^^^
+  
+  SyntaxError: await is only valid in async function
+      at wrapSafe (internal/modules/cjs/loader.js:915:16)
+      at Module._compile (internal/modules/cjs/loader.js:963:27)
+      at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+      at Module.load (internal/modules/cjs/loader.js:863:32)
+      at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+      at Module.require (internal/modules/cjs/loader.js:887:19)
+      at require (internal/modules/cjs/helpers.js:74:18)
+      at Object.<anonymous> (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/index.js:9:12)
+      at Module._compile (internal/modules/cjs/loader.js:999:30)
+      at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10),
+  level: 'error',
+  message: 'uncaughtException: await is only valid in async function\n' +
+    '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/services/niubiz/index.js:184\n' +
+    ' await function payment(request) {\n' +
+    ' ^^^^^\n' +
+    '\n' +
+    'SyntaxError: await is only valid in async function\n' +
+    '    at wrapSafe (internal/modules/cjs/loader.js:915:16)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:963:27)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)\n' +
+    '    at Module.load (internal/modules/cjs/loader.js:863:32)\n' +
+    '    at Function.Module._load (internal/modules/cjs/loader.js:708:14)\n' +
+    '    at Module.require (internal/modules/cjs/loader.js:887:19)\n' +
+    '    at require (internal/modules/cjs/helpers.js:74:18)\n' +
+    '    at Object.<anonymous> (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/index.js:9:12)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:999:30)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)',
+  stack: '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/services/niubiz/index.js:184\n' +
+    ' await function payment(request) {\n' +
+    ' ^^^^^\n' +
+    '\n' +
+    'SyntaxError: await is only valid in async function\n' +
+    '    at wrapSafe (internal/modules/cjs/loader.js:915:16)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:963:27)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)\n' +
+    '    at Module.load (internal/modules/cjs/loader.js:863:32)\n' +
+    '    at Function.Module._load (internal/modules/cjs/loader.js:708:14)\n' +
+    '    at Module.require (internal/modules/cjs/loader.js:887:19)\n' +
+    '    at require (internal/modules/cjs/helpers.js:74:18)\n' +
+    '    at Object.<anonymous> (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/index.js:9:12)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:999:30)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)',
+  exception: true,
+  date: 'Fri Jan 07 2022 12:07:21 GMT-0300 (GMT-03:00)',
+  process: {
+    pid: 24794,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment',
+    execPath: '/Users/rafael/.asdf/installs/nodejs/12.22.1/bin/node',
+    version: 'v12.22.1',
+    argv: [
+      '/Users/rafael/.asdf/installs/nodejs/12.22.1/bin/node',
+      '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/index.js'
+    ],
+    memoryUsage: {
+      rss: 47726592,
+      heapTotal: 18956288,
+      heapUsed: 11247576,
+      external: 1478627,
+      arrayBuffers: 133120
+    }
+  },
+  os: {
+    loadavg: [ 2.60107421875, 1.9833984375, 1.61865234375 ],
+    uptime: 158965
+  },
+  trace: [
+    {
+      column: 16,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'wrapSafe',
+      line: 915,
+      method: null,
+      native: false
+    },
+    {
+      column: 27,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._compile',
+      line: 963,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._extensions..js',
+      line: 1027,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module.load',
+      line: 863,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._load',
+      line: 708,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 19,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module.require',
+      line: 887,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 18,
+      file: 'internal/modules/cjs/helpers.js',
+      function: 'require',
+      line: 74,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/app/index.js',
+      function: null,
+      line: 9,
+      method: null,
+      native: false
+    },
+    {
+      column: 30,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._compile',
+      line: 999,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._extensions..js',
+      line: 1027,
+      method: '.js',
+      native: false
+    }
+  ],
+  timestamp: '2022-01-07T15:07:21.303Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T15:08:13.018Z'
+}

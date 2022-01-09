@@ -1,0 +1,377 @@
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:11:41.184Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:13:33.230Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:16:08.207Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:18:27.238Z'
+}
+{
+  error: Error: listen EADDRINUSE: address already in use :::3000
+      at Server.setupListenHandle [as _listen2] (net.js:1316:16)
+      at listenInCluster (net.js:1364:12)
+      at Server.listen (net.js:1450:7)
+      at Function.listen (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/node_modules/express/lib/application.js:618:24)
+      at Object.<anonymous> (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/index.js:67:5)
+      at Module._compile (internal/modules/cjs/loader.js:999:30)
+      at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+      at Module.load (internal/modules/cjs/loader.js:863:32)
+      at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+      at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12) {
+    code: 'EADDRINUSE',
+    errno: 'EADDRINUSE',
+    syscall: 'listen',
+    address: '::',
+    port: 3000
+  },
+  level: 'error',
+  message: 'uncaughtException: listen EADDRINUSE: address already in use :::3000\n' +
+    'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (net.js:1316:16)\n' +
+    '    at listenInCluster (net.js:1364:12)\n' +
+    '    at Server.listen (net.js:1450:7)\n' +
+    '    at Function.listen (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/node_modules/express/lib/application.js:618:24)\n' +
+    '    at Object.<anonymous> (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/index.js:67:5)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:999:30)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)\n' +
+    '    at Module.load (internal/modules/cjs/loader.js:863:32)\n' +
+    '    at Function.Module._load (internal/modules/cjs/loader.js:708:14)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)',
+  stack: 'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (net.js:1316:16)\n' +
+    '    at listenInCluster (net.js:1364:12)\n' +
+    '    at Server.listen (net.js:1450:7)\n' +
+    '    at Function.listen (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/node_modules/express/lib/application.js:618:24)\n' +
+    '    at Object.<anonymous> (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/index.js:67:5)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:999:30)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)\n' +
+    '    at Module.load (internal/modules/cjs/loader.js:863:32)\n' +
+    '    at Function.Module._load (internal/modules/cjs/loader.js:708:14)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)',
+  exception: true,
+  date: 'Fri Jan 07 2022 16:19:44 GMT-0300 (GMT-03:00)',
+  process: {
+    pid: 31490,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment',
+    execPath: '/Users/rafael/.asdf/installs/nodejs/12.22.1/bin/node',
+    version: 'v12.22.1',
+    argv: [
+      '/Users/rafael/.asdf/installs/nodejs/12.22.1/bin/node',
+      '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/index.js'
+    ],
+    memoryUsage: {
+      rss: 47333376,
+      heapTotal: 18694144,
+      heapUsed: 11548400,
+      external: 1577755,
+      arrayBuffers: 133482
+    }
+  },
+  os: {
+    loadavg: [ 3.43798828125, 2.84375, 3.50634765625 ],
+    uptime: 174108
+  },
+  trace: [
+    {
+      column: 16,
+      file: 'net.js',
+      function: 'Server.setupListenHandle [as _listen2]',
+      line: 1316,
+      method: 'setupListenHandle [as _listen2]',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'net.js',
+      function: 'listenInCluster',
+      line: 1364,
+      method: null,
+      native: false
+    },
+    {
+      column: 7,
+      file: 'net.js',
+      function: 'Server.listen',
+      line: 1450,
+      method: 'listen',
+      native: false
+    },
+    {
+      column: 24,
+      file: '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/node_modules/express/lib/application.js',
+      function: 'Function.listen',
+      line: 618,
+      method: 'listen',
+      native: false
+    },
+    {
+      column: 5,
+      file: '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/index.js',
+      function: null,
+      line: 67,
+      method: null,
+      native: false
+    },
+    {
+      column: 30,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._compile',
+      line: 999,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._extensions..js',
+      line: 1027,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module.load',
+      line: 863,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._load',
+      line: 708,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'internal/modules/run_main.js',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 60,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    }
+  ],
+  timestamp: '2022-01-07T19:19:44.143Z'
+}
+{
+  error: Error: listen EADDRINUSE: address already in use :::3000
+      at Server.setupListenHandle [as _listen2] (net.js:1316:16)
+      at listenInCluster (net.js:1364:12)
+      at Server.listen (net.js:1450:7)
+      at Function.listen (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/node_modules/express/lib/application.js:618:24)
+      at Object.<anonymous> (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/index.js:67:5)
+      at Module._compile (internal/modules/cjs/loader.js:999:30)
+      at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+      at Module.load (internal/modules/cjs/loader.js:863:32)
+      at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+      at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12) {
+    code: 'EADDRINUSE',
+    errno: 'EADDRINUSE',
+    syscall: 'listen',
+    address: '::',
+    port: 3000
+  },
+  level: 'error',
+  message: 'uncaughtException: listen EADDRINUSE: address already in use :::3000\n' +
+    'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (net.js:1316:16)\n' +
+    '    at listenInCluster (net.js:1364:12)\n' +
+    '    at Server.listen (net.js:1450:7)\n' +
+    '    at Function.listen (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/node_modules/express/lib/application.js:618:24)\n' +
+    '    at Object.<anonymous> (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/index.js:67:5)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:999:30)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)\n' +
+    '    at Module.load (internal/modules/cjs/loader.js:863:32)\n' +
+    '    at Function.Module._load (internal/modules/cjs/loader.js:708:14)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)',
+  stack: 'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (net.js:1316:16)\n' +
+    '    at listenInCluster (net.js:1364:12)\n' +
+    '    at Server.listen (net.js:1450:7)\n' +
+    '    at Function.listen (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/node_modules/express/lib/application.js:618:24)\n' +
+    '    at Object.<anonymous> (/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/index.js:67:5)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:999:30)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)\n' +
+    '    at Module.load (internal/modules/cjs/loader.js:863:32)\n' +
+    '    at Function.Module._load (internal/modules/cjs/loader.js:708:14)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)',
+  exception: true,
+  date: 'Fri Jan 07 2022 16:19:52 GMT-0300 (GMT-03:00)',
+  process: {
+    pid: 31652,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment',
+    execPath: '/Users/rafael/.asdf/installs/nodejs/12.22.1/bin/node',
+    version: 'v12.22.1',
+    argv: [
+      '/Users/rafael/.asdf/installs/nodejs/12.22.1/bin/node',
+      '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/index.js'
+    ],
+    memoryUsage: {
+      rss: 47235072,
+      heapTotal: 18956288,
+      heapUsed: 11527696,
+      external: 1577755,
+      arrayBuffers: 133482
+    }
+  },
+  os: {
+    loadavg: [ 6.00341796875, 3.4091796875, 3.6982421875 ],
+    uptime: 174116
+  },
+  trace: [
+    {
+      column: 16,
+      file: 'net.js',
+      function: 'Server.setupListenHandle [as _listen2]',
+      line: 1316,
+      method: 'setupListenHandle [as _listen2]',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'net.js',
+      function: 'listenInCluster',
+      line: 1364,
+      method: null,
+      native: false
+    },
+    {
+      column: 7,
+      file: 'net.js',
+      function: 'Server.listen',
+      line: 1450,
+      method: 'listen',
+      native: false
+    },
+    {
+      column: 24,
+      file: '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/node_modules/express/lib/application.js',
+      function: 'Function.listen',
+      line: 618,
+      method: 'listen',
+      native: false
+    },
+    {
+      column: 5,
+      file: '/Users/rafael/Documents/Projects/Oracle/estilos/sse/payment/index.js',
+      function: null,
+      line: 67,
+      method: null,
+      native: false
+    },
+    {
+      column: 30,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._compile',
+      line: 999,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._extensions..js',
+      line: 1027,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module.load',
+      line: 863,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._load',
+      line: 708,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'internal/modules/run_main.js',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 60,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    }
+  ],
+  timestamp: '2022-01-07T19:19:52.945Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:20:06.405Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:23:10.969Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:32:22.461Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:35:46.132Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:42:56.359Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:44:55.108Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:46:29.217Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:48:59.476Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:50:02.258Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:52:09.039Z'
+}
+{
+  message: 'Listening on port 3000...',
+  level: 'info',
+  timestamp: '2022-01-07T19:53:29.584Z'
+}

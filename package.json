@@ -1,22 +1,47 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js"
-    },
-    "devDependencies": {
-        "axios": "^0.19",
-        "cross-env": "^7.0",
-        "laravel-mix": "^5.0.1",
-        "lodash": "^4.17.19",
-        "resolve-url-loader": "^3.1.0",
-        "sass": "^1.15.2",
-        "sass-loader": "^8.0.0",
-        "vue-template-compiler": "^2.6.14"
-    }
+	"authenticatedUrls": [],
+	"author": "Oracle Inc.",
+	"config": {
+		"port": "3000"
+	},
+	"dependencies": {
+		"axios": "^0.19.2",
+		"body-parser": "^1.18.2",
+		"config": "latest"
+	},
+	"devDependencies": {
+		"express": "latest",
+		"jshint": "^2.10.3",
+		"nconf": "latest",
+		"winston": "latest",
+		"winston-daily-rotate-file": "^3.10.0"
+	},
+	"whitelistUrls": [
+		"https://apitestenv.vnforapps.com",
+		"https://apitestenv.vnforapps.com:443"
+	],
+	"description": "Server Side Extension for Payment",
+	"license": "SEE LICENSE IN LICENSE.TXT",
+	"main": "/app/index.js",
+	"name": "payment",
+	"publicUrls": [
+		"/ccstorex/custom/v1/payment"
+	],
+	"scripts": {
+		"lint": "jshint ./app || rem",
+		"start": "node index.js"
+	},
+	"translations": [
+		{
+			"description": "Server Side Extension for Travel",
+			"language": "en_US",
+			"name": "Server Side Extension for Payment"
+		},
+		{
+			"description": "Server Side Extension for Payment",
+			"language": "es_ES",
+			"name": "Server Side Extension para Payment"
+		}
+	],
+	"version": "1.0.0"
 }
