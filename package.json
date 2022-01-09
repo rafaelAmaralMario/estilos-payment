@@ -7,9 +7,7 @@
 	"dependencies": {
 		"axios": "^0.19.2",
 		"body-parser": "^1.18.2",
-		"config": "latest"
-	},
-	"devDependencies": {
+		"config": "latest",
 		"express": "latest",
 		"jshint": "^2.10.3",
 		"nconf": "latest",
