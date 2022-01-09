@@ -22,7 +22,7 @@ app.use(function(req, res, next) {
 app.use("/ccstorex/custom", require("./app/index"));
 
 // Read port from command line, config, or default
-var port = (process.argv[2] || (process.env.npm_package_config_port || 3000));
+var port = (process.env.PORT || process.argv[2] || (process.env.npm_package_config_port || 3000));
 
 app.listen(port, function () {
   'use strict';
