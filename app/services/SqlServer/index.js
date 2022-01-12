@@ -15,9 +15,13 @@ async function connectToDataBase() {
         const sequelize = new Sequelize(dbName, dbUser, dbPass, {
             host: dbHost,
             dialect: 'mssql',
-            dialectOptions: {
-                port: 8003
-            }     
+            pool: {
+                max: 15,
+                min: 5,
+                idle: 20000,
+                evict: 15000,
+                acquire: 30000
+              }  
         });
         
         await sequelize.authenticate();
