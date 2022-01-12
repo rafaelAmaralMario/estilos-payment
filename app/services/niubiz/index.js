@@ -5,7 +5,7 @@
 const axios = require('axios');
 const {getEnvironmentVariable} = require('../../config');
 const {LogFactory} = require('../../../logger')
-
+const {getAmount} = require("../utils")
 
 function getError(error) {
 
@@ -157,16 +157,8 @@ function getError(error) {
         logger.debug(`GET ANTI FRAUDE`);
         const baseURL = getEnvironmentVariable('NB_URL');
         const merchantId = getEnvironmentVariable('NB_MERCHANTID');
-        let value = "";
-        for(let i = 0; i < data['amount'].length; i++) {
-            if(value > 1) {
-                value =`${value}${data['amount'][i]}`
-            } else if(data['amount'][i] > 0) {
-                value = data['amount'][i]
-            }
-        }
     
-        data['amount'] = value.slice(0, -2);
+        data['amount'] = getAmount(data['amount']);
         data['orderId'] = data['orderId'].slice(1,data['orderId'].length);
          
          const words = data['holderName'].split(" ");
@@ -240,7 +232,7 @@ function getError(error) {
     } catch (error) {
         const errorMessage = getError(error)
         
-        logger.debug(`ERROR ANTIFRAUDE: ${JSON.stringify(errorMessage)}`);
+        logger.debug(`ERROR ANTIFRAUDE: ${JSON.stringify(error)}`);
         return {error}
     }
 
@@ -300,8 +292,6 @@ function getError(error) {
             }
         }
 
-
-
         let responseCode = "";
         let responseReason = "" 
         let responseDescription =""  
@@ -353,7 +343,7 @@ function getError(error) {
         authorizationResponse: {
             "responseCode" : "9000",
             "responseReason" : "failed on payment",
-            "responseDescription" : errorMessage,
+            "responseDescription" : JSON.stringify(error),
             "authorizationCode" : "error",
             "hostTransactionId" : "error"
         }

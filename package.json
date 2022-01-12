@@ -5,25 +5,38 @@
 		"port": "3000"
 	},
 	"dependencies": {
-		"axios": "^0.19.2",
-		"body-parser": "^1.18.2",
+		"axios": "*",
+		"body-parser": "*",
 		"config": "*",
+		"date-fns": "*",
+		"sequelize": "*",
+		"soap": "*",
+		"tedious": "*",
+		"xml2js": "*",
 		"express": "*",
-		"jshint": "^2.10.3",
+		"jshint": "*",
 		"nconf": "*",
 		"winston": "*",
-		"winston-daily-rotate-file": "^3.10.0"
+		"winston-daily-rotate-file": "*"
 	},
-	"whitelistUrls": [
+	"devDependencies": {
+
+	},
+	"allowedUrls": [
 		"https://apitestenv.vnforapps.com",
-		"https://apitestenv.vnforapps.com:443"
+		"https://apitestenv.vnforapps.com:443",
+		"https://wap.nuestrafamilia.com.pe:443",
+		"https://wap.nuestrafamilia.com.pe"
 	],
 	"description": "Server Side Extension for Payment",
 	"license": "SEE LICENSE IN LICENSE.TXT",
 	"main": "/app/index.js",
 	"name": "payment",
 	"publicUrls": [
-		"/ccstorex/custom/v1/payment"
+		"/ccstorex/custom/v1/payment",
+		"/ccstorex/custom/v1/tarjeta-estilos/get-data",
+		"/ccstorex/custom/v1/tarjeta-estilos/installments",
+		"/ccstorex/custom/v1/tarjeta-estilos/tarifario"
 	],
 	"scripts": {
 		"lint": "jshint ./app || rem",
