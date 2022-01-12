@@ -14,7 +14,10 @@ async function connectToDataBase() {
         const dbHost = getEnvironmentVariable("DB_HOST")
         const sequelize = new Sequelize(dbName, dbUser, dbPass, {
             host: dbHost,
-            dialect: 'mssql'      
+            dialect: 'mssql',
+            dialectOptions: {
+                port: 8003
+            }     
         });
         
         await sequelize.authenticate();
