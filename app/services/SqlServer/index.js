@@ -15,7 +15,7 @@ async function connectToDataBase() {
         const sequelize = new Sequelize(dbName, dbUser, dbPass, {
             host: dbHost,
             dialect: 'mssql',
-            port: 8003,
+            port: 1433,
             pool: {
                 max: 15,
                 min: 5,
