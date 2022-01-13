@@ -19,9 +19,6 @@
 		"winston": "*",
 		"winston-daily-rotate-file": "*"
 	},
-	"devDependencies": {
-
-	},
 	"allowedUrls": [
 		"https://apitestenv.vnforapps.com",
 		"https://apitestenv.vnforapps.com:443",

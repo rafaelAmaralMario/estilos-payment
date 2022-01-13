@@ -11,15 +11,16 @@ async function connectToDataBase() {
         const dbPass = getEnvironmentVariable("DB_PASS")
         const dbHost = getEnvironmentVariable("DB_HOST")
 
-        logger.debug(`Connection has been established successfully.`);
-        logger.debug(`DB_NAME: ${dbName}`);
-        logger.debug(`DB_USER: ${dbUser}`);
-        logger.debug(`DB_PASS: ${dbPass}`);
-        logger.debug(`DB_HOST: ${dbHost}`);
-
         const sequelize = new Sequelize(dbName, dbUser, dbPass, {
             host: dbHost,
-            dialect: 'mssql' 
+            dialect: 'mssql',
+            port: 1434,
+            pool: {
+                max: 5,
+                min: 0,
+                acquire: 30000,
+                idle: 10000
+              }
         });
 
         await sequelize.authenticate();
