@@ -9,15 +9,16 @@
 		"body-parser": "*",
 		"config": "*",
 		"date-fns": "*",
+		"express": "*",
+		"jshint": "*",
+		"mssql": "^7.3.0",
+		"nconf": "*",
 		"sequelize": "*",
 		"soap": "*",
 		"tedious": "*",
-		"xml2js": "*",
-		"express": "*",
-		"jshint": "*",
-		"nconf": "*",
 		"winston": "*",
-		"winston-daily-rotate-file": "*"
+		"winston-daily-rotate-file": "*",
+		"xml2js": "*"
 	},
 	"allowedUrls": [
 		"https://apitestenv.vnforapps.com",
