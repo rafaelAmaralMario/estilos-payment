@@ -2,8 +2,6 @@ const { Sequelize } = require('sequelize');
 const {getEnvironmentVariable} = require('../../config');
 const {LogFactory} = require('../../../logger')
 
-
-
 async function connectToDataBase() {
     const logger = LogFactory.logger();
     try {
@@ -12,19 +10,18 @@ async function connectToDataBase() {
         const dbUser = getEnvironmentVariable("DB_USER")
         const dbPass = getEnvironmentVariable("DB_PASS")
         const dbHost = getEnvironmentVariable("DB_HOST")
+
+        logger.debug(`Connection has been established successfully.`);
+        logger.debug(`DB_NAME: ${dbName}`);
+        logger.debug(`DB_USER: ${dbUser}`);
+        logger.debug(`DB_PASS: ${dbPass}`);
+        logger.debug(`DB_HOST: ${dbHost}`);
+
         const sequelize = new Sequelize(dbName, dbUser, dbPass, {
             host: dbHost,
-            dialect: 'mssql',
-            port: 1433,
-            pool: {
-                max: 15,
-                min: 5,
-                idle: 20000,
-                evict: 15000,
-                acquire: 30000
-              }  
+            dialect: 'mssql' 
         });
-        
+
         await sequelize.authenticate();
         logger.debug(`Connection has been established successfully.`);
         return sequelize;
