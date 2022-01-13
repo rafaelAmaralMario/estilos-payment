@@ -10,6 +10,7 @@ async function connectToDataBase() {
         const dbUser = getEnvironmentVariable("DB_USER")
         const dbPass = getEnvironmentVariable("DB_PASS")
         const dbHost = getEnvironmentVariable("DB_HOST")
+        logger.debug(`dbHost ${dbHost}`);
 
         const sequelize = new Sequelize(dbName, dbUser, dbPass, {
             host: dbHost,
