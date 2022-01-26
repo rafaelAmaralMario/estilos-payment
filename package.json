@@ -12,9 +12,7 @@
 		"sequelize": "^6.13.0",
 		"soap": "^0.43.0",
 		"tedious": "^14.0.0",
-		"xml2js": "^0.4.23"
-	},
-	"devDependencies": {
+		"xml2js": "^0.4.23",
 		"express": "latest",
 		"jshint": "^2.10.3",
 		"nconf": "latest",
