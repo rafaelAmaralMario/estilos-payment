@@ -63,7 +63,8 @@ router.post('/v1/payment', async (req, res) => {
       "transactionTimestamp": transactionTimestamp,
       "paymentMethod": paymentMethod,
       "gatewayId": gatewayId,
-      authorizationResponse: response.authorizationResponse
+      authorizationResponse: response.authorizationResponse,
+      additionalProperties: response.additionalProperties
     })
 
   } catch (error) {

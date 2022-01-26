@@ -299,6 +299,7 @@ function getError(error) {
         let hostTransactionId = ""
         let merchantTransactionId = ""
         let hostTimestamp = new Date().getTime();
+        let additionalProperties = {}
        
         if (!validacion["dataMap"]) {
             logger.debug(`ERROR ON VALIDATION PAYMENT ${JSON.stringify(validacion, null, 2)}`);
@@ -319,6 +320,7 @@ function getError(error) {
             hostTransactionId = validacion["dataMap"]["TRANSACTION_ID"]
             merchantTransactionId = validacion["dataMap"]["MERCHANT"]
             hostTimestamp = validacion["dataMap"]["TRANSACTION_DATE"]
+            additionalProperties = validacion["dataMap"]
         }
 
         
@@ -331,7 +333,8 @@ function getError(error) {
                 "hostTransactionId" : hostTransactionId,
                 merchantTransactionId
             },
-            hostTimestamp 
+            hostTimestamp,
+            additionalProperties
         }
     } catch (error) {
 

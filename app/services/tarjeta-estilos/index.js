@@ -1,10 +1,22 @@
 const crypto = require('crypto');
-const {getEnvironmentVariable, axiosRequest: axios} = require('../../config');
-const xml2js = require('xml2js');
+const {getEnvironmentVariable, getProxyUrl, getProxyWhitelist} = require('../../config');
 var soap = require('soap');
+
+const getProxyAgent = (baseUrl = '') => {
+    let host = (baseUrl && new URL(baseUrl).host) || '';
+    const proxyUrl = getProxyUrl();
+    const whitelist = getProxyWhitelist();
+  
+    if (proxyUrl && !whitelist.includes(host)) {
+      return new HttpsProxyAgent(proxyUrl);
+    }
+  
+    return null;
+  }
 
 async function getCardData(request) {
     try {
+        
         const baseURL = getEnvironmentVariable("RP3_URL_WS");
 
         const {dniCustomerCode, companyCode = 1, card, password = ""} = request;
@@ -26,7 +38,9 @@ async function getCardData(request) {
 
         const url = `${baseURL}/Rp3.Web.Estilos.Ecommerce/ConsultaCredito.asmx?wsdl`;
 
-        const client = await soap.createClientAsync(url);
+        const httpClient = getProxyAgent(baseURL);
+
+        const client = await soap.createClientAsync(url,{httpClient});
 
         const result = await client.ObtenerObtenerDatosTarjetaAsync(args);
 
@@ -73,7 +87,9 @@ async function getInstallments(request) {
        
         const url = `${baseURL}/Rp3.Web.Estilos.Ecommerce/Operacion.asmx?wsdl`;
 
-        const client = await soap.createClientAsync(url);
+        const httpClient = getProxyAgent(baseURL);
+
+        const client = await soap.createClientAsync(url,{httpClient});
 
         const result = await client.SimuladorCuotasAsync(args);
 
@@ -94,8 +110,9 @@ async function getTarifario(tarjeta) {
     try {
         const baseURL = getEnvironmentVariable("RP3_URL_WS");
         const url = `${baseURL}/Estilos.ServiceTiendaVirtual/EstilosTiendaVirtual.svc?wsdl`;
+        const httpClient = getProxyAgent(baseURL);
 
-        const client = await soap.createClientAsync(url);
+        const client = await soap.createClientAsync(url,{httpClient});
         const result = await client.mxConsultaTarifarioAsync({"tcTarjeta" : tarjeta});
 
         const mxConsultaTarifarioResult = result[0]['mxConsultaTarifarioResult']
@@ -112,9 +129,10 @@ async function getTarifario(tarjeta) {
 }
 
 async function getTransactionEstilosCard(request) {
-
 try {
     const baseURL = getEnvironmentVariable("RP3_URL_WS");
+    const httpClient = getProxyAgent(baseURL);
+
     const url = `${baseURL}/Estilos.ServiceTiendaVirtual/EstilosTiendaVirtual.svc?wsdl`;
     const {cardAccount, cardNumber, cardPassword, billDate,tipoDeferido,installments,dniCustomerCode, billingAddress = {}, products = [], payment, FormaPago} = request;
     const {firstName, lastName, state, email, phoneNumber} = billingAddress;
@@ -161,7 +179,7 @@ try {
             <tem:IdDocumentoCliente>${dniCustomerCode}</tem:IdDocumentoCliente>
         </tem:TransactionRegistration>`;
 
-    const client = await soap.createClientAsync(url);
+    const client = await soap.createClientAsync(url,{httpClient});
     const result = await client.TransactionRegistrationAsync({_xml : xmlBody});
 
     const transactionRegistrationResult = result[0]['TransactionRegistrationResult']
@@ -180,7 +198,8 @@ try {
                         "authorizationCode": transactionId,
                         "hostTransactionId": transactionId
                     },
-                    hostTimestamp: new Date().getTime()
+                    hostTimestamp: new Date().getTime(),
+                    additionalProperties : transactionResponse
                 }
             }
 
