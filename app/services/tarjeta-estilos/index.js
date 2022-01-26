@@ -115,7 +115,7 @@ async function getTransactionEstilosCard(request) {
 
 try {
     const baseURL = getEnvironmentVariable("RP3_URL_WS");
-    const url = `${baseURL}/Estilos.AppPagos/EstilosTiendaVirtual.svc?wsdl`;
+    const url = `${baseURL}/Estilos.ServiceTiendaVirtual/EstilosTiendaVirtual.svc?wsdl`;
     const {cardAccount, cardNumber, cardPassword, billDate,tipoDeferido,installments,dniCustomerCode, billingAddress = {}, products = [], payment, FormaPago} = request;
     const {firstName, lastName, state, email, phoneNumber} = billingAddress;
     const formattedDate = billDate.split("T")[0];
