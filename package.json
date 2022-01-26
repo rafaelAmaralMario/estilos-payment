@@ -5,19 +5,19 @@
 		"port": "3000"
 	},
 	"dependencies": {
-		"axios": "latest",
-		"body-parser": "latest",
-		"config": "latest",
-		"date-fns": "latest",
-		"sequelize": "latest",
-		"soap": "latest",
-		"tedious": "latest",
-		"xml2js": "latest",
-		"express": "latest",
-		"jshint": "latest",
-		"nconf": "latest",
-		"winston": "latest",
-		"winston-daily-rotate-file": "latest"
+		"axios": "*",
+		"body-parser": "*",
+		"config": "*",
+		"date-fns": "*",
+		"sequelize": "*",
+		"soap": "*",
+		"tedious": "*",
+		"xml2js": "*",
+		"express": "*",
+		"jshint": "*",
+		"nconf": "*",
+		"winston": "*",
+		"winston-daily-rotate-file": "*"
 	},
 	"allowedUrls": [
 		"https://apitestenv.vnforapps.com",
