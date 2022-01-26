@@ -19,6 +19,8 @@ app.use(function(req, res, next) {
 
  // Request methods you wish to allow
  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+ res.setHeader('Access-Control-Allow-Headers', '*')
   //http://expressjs.com/en/api.html#res.locals
   //use res.locals to pass object between main and sub apps
   res.locals.logger = logger;
