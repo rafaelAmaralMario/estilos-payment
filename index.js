@@ -22,7 +22,11 @@ app.use(function(req, res, next) {
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 app.use("/ccstorex/custom", require("./app/index"));
+ // Website you wish to allow to connect
+ res.setHeader('Access-Control-Allow-Origin', '*');
 
+ // Request methods you wish to allow
+ res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 // Read port from command line, config, or default
 var port = (process.env.PORT || process.argv[2] || (process.env.npm_package_config_port || 3000));
 
