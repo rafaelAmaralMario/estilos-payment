@@ -19,6 +19,8 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 app.use("/ccstorex/custom", require("./app/index"));
 
 // Read port from command line, config, or default

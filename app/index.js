@@ -3,6 +3,7 @@
  */
 /* eslint-disable camelcase */
 
+const axios = require('axios');
 const express = require('express');
 const router = new express.Router();
 const { payment } = require("./services/niubiz")
@@ -11,8 +12,6 @@ const { getEnvironmentVariable } = require("./config")
 
 
 const { LogFactory } = require('../logger')
-
-
 
 // routes
 
@@ -29,21 +28,22 @@ router.post('/v1/payment', async (req, res) => {
     let response = {};
 
     if (gatewayId === estilosCardGatewayId) {
-      const { cardAccount, cardNumber, cardPassword, estilosPaymentMethod, installments, dniCustomerCode, products, payment, paymentForm } = customProperties;
+      const { cardAccount, cardNumber, cardPassword, tipoDeferido, installments, dniCustomerCode, products, payment, FormaPago } = customProperties;
 
       const estilosCardRequest = {
         cardAccount, 
         cardNumber, 
         cardPassword, 
         billDate: transactionTimestamp, 
-        paymentMethod: estilosPaymentMethod, 
+        tipoDeferido, 
         installments, 
         dniCustomerCode, 
         products, 
         payment, 
-        paymentForm, 
+        FormaPago, 
         billingAddress
       }
+      
       response = await getTransactionEstilosCard(estilosCardRequest);
     } else {
       logger.debug(`Request Niubiz Flow: ${JSON.stringify(req.body)}`);
@@ -51,7 +51,6 @@ router.post('/v1/payment', async (req, res) => {
       logger.debug(`Request Niubiz completed`);
 
     }
-
 
     return res.status(200).json({
       "orderId": orderId,
@@ -158,6 +157,5 @@ router.post('/v1/tarjeta-estilos/tarifario', async (req, res) => {
     return res.status(400).json(error)
   }
 });
-
 
 module.exports = router;

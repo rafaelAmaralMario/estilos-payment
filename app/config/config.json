@@ -1,3 +1,8 @@
 {
-
+  "NB_URL": "https://apitestenv.vnforapps.com:443",
+  "NB_USERNAME": "giancagallardo@gmail.com",
+  "NB_PASSWORD": "Av3$truz",
+  "NB_MERCHANTID": "522591303",
+  "RP3_URL_WS":"https://wap.nuestrafamilia.com.pe:443",
+  "TARJETA_ESTILOS_GATEWAY_ID": "TarjetaEstilos"
 }

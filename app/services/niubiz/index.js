@@ -52,7 +52,7 @@ function getError(error) {
      try {
         const baseURL = getEnvironmentVariable('NB_URL');
 
-        logger.debug(` Confirmar PAGO`);
+        logger.debug(`Confirmar PAGO`);
     
          const data = {
                  "channel" : "pasarela",
