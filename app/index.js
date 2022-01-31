@@ -6,10 +6,10 @@
 const axios = require('axios');
 const express = require('express');
 const router = new express.Router();
-const { payment } = require("./services/niubiz")
+const { getPayment } = require("./services/niubiz")
 const { getCardData, getTarifario, getInstallments, getTransactionEstilosCard } = require("./services/tarjeta-estilos")
 const { getEnvironmentVariable } = require("./config")
-
+let sunatSequential=9000;
 
 const { LogFactory } = require('../logger')
 
@@ -34,12 +34,6 @@ router.post('/v1/payment', async (req, res) => {
     const parsedProducts = JSON.parse(products);
     const parsedPayment = JSON.parse(payment);
 
-
-    if(sunatSequentialResetEnv && sunatSequentialResetEnv !== "false") {
-      sunatSequential = sunatSequentialEnv;
-      await updateSSEVariable("SUNAT_SEQUENTIAL_RESET", false);
-    }
-
     if (gatewayId === estilosCardGatewayId) {
 
       const estilosCardRequest = {
@@ -61,7 +55,6 @@ router.post('/v1/payment', async (req, res) => {
     } else {
       logger.debug(`Request Niubiz Flow: ${JSON.stringify(req.body)}`);
       response = await getPayment(req.body);
-      const orderNumber = orderId[0]? orderId.slice(1, orderId.length): orderId;
       const estilosCardRequest = {
         cardAccount: "", 
         cardNumber: "6010100103000009", 
@@ -77,16 +70,23 @@ router.post('/v1/payment', async (req, res) => {
         sunatSequential,
         isNiubiz: true
       }
-      const transactionResponse = await getTransactionEstilosCard(estilosCardRequest);
-      response.additionalProperties = {niubiz : response.additionalProperties, tarjetaEstilos: transactionResponse} 
+      try {
+        const transactionResponse = await getTransactionEstilosCard(estilosCardRequest);
+        if(transactionResponse.authorizationResponse.responseCode === "9000") {
+          response.additionalProperties["tarjetaEstilosErrorMessage"] = transactionResponse.authorizationResponse.responseReason;
+        } else {
+          response.additionalProperties["tarjetaEstilos"] = transactionResponse;
+        }
+      } catch (error) {
+        response.additionalProperties["tarjetaEstilosErrorMessage"] = error.authorizationResponse.responseReason;
+      }
+
 
       logger.debug(`Request Niubiz completed`);
 
     }
 
     sunatSequential= Number(sunatSequential)+1
-    await updateSSEVariable("SUNAT_SEQUENTIAL", sunatSequential);
-
     logger.debug(`Request completed: ${JSON.stringify(response.additionalProperties)}`);
 
     return res.status(200).json({
