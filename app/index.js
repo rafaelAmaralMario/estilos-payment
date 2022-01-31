@@ -18,17 +18,29 @@ const { LogFactory } = require('../logger')
 // niubiz
 router.post('/v1/payment', async (req, res) => {
   'use strict';
-  const { orderId, currencyCode, transactionId, paymentId, amount, transactionType, transactionTimestamp, gatewayId, paymentMethod, customProperties, billingAddress } = req.body;
-  const estilosCardGatewayId = getEnvironmentVariable("TARJETA_ESTILOS_GATEWAY_ID");
+  const { orderId, currencyCode, transactionId, paymentId, amount, transactionType, transactionTimestamp, gatewayId, paymentMethod, customProperties, billingAddress, cardDetails } = req.body;
+
+
   // Logs path for this SSE is in root path /logs
   const logger = LogFactory.logger();
   logger.debug(`Starting Payment request: ${JSON.stringify(req.body)}`);
 
   try {
     let response = {};
+    const { cardAccount="", cardNumber="", cardPassword="1234", tipoDeferido = "1", installments="1", dniCustomerCode="", products, payment, FormaPago="3" } = customProperties;
+    const estilosCardGatewayId = getEnvironmentVariable("TARJETA_ESTILOS_GATEWAY_ID");
+    const sunatSequentialEnv = getEnvironmentVariable("SUNAT_SEQUENTIAL");
+    const sunatSequentialResetEnv = getEnvironmentVariable("SUNAT_SEQUENTIAL_RESET");
+    const parsedProducts = JSON.parse(products);
+    const parsedPayment = JSON.parse(payment);
+
+
+    if(sunatSequentialResetEnv && sunatSequentialResetEnv !== "false") {
+      sunatSequential = sunatSequentialEnv;
+      await updateSSEVariable("SUNAT_SEQUENTIAL_RESET", false);
+    }
 
     if (gatewayId === estilosCardGatewayId) {
-      const { cardAccount, cardNumber, cardPassword, tipoDeferido, installments, dniCustomerCode, products, payment, FormaPago } = customProperties;
 
       const estilosCardRequest = {
         cardAccount, 
@@ -38,19 +50,44 @@ router.post('/v1/payment', async (req, res) => {
         tipoDeferido, 
         installments, 
         dniCustomerCode, 
-        products, 
-        payment, 
+        products : parsedProducts, 
+        payment: parsedPayment, 
         FormaPago, 
-        billingAddress
+        billingAddress,
+        sunatSequential
       }
       
       response = await getTransactionEstilosCard(estilosCardRequest);
     } else {
       logger.debug(`Request Niubiz Flow: ${JSON.stringify(req.body)}`);
-      response = await payment(req.body);
+      response = await getPayment(req.body);
+      const orderNumber = orderId[0]? orderId.slice(1, orderId.length): orderId;
+      const estilosCardRequest = {
+        cardAccount: "", 
+        cardNumber: "6010100103000009", 
+        cardPassword: "1234", 
+        billDate: transactionTimestamp, 
+        tipoDeferido: "1", 
+        installments: "1", 
+        dniCustomerCode: dniCustomerCode, 
+        products : parsedProducts, 
+        payment: parsedPayment,
+        FormaPago : "3", 
+        billingAddress,
+        sunatSequential,
+        isNiubiz: true
+      }
+      const transactionResponse = await getTransactionEstilosCard(estilosCardRequest);
+      response.additionalProperties = {niubiz : response.additionalProperties, tarjetaEstilos: transactionResponse} 
+
       logger.debug(`Request Niubiz completed`);
 
     }
+
+    sunatSequential= Number(sunatSequential)+1
+    await updateSSEVariable("SUNAT_SEQUENTIAL", sunatSequential);
+
+    logger.debug(`Request completed: ${JSON.stringify(response.additionalProperties)}`);
 
     return res.status(200).json({
       "orderId": orderId,
@@ -95,7 +132,6 @@ router.post('/v1/payment', async (req, res) => {
     );
   }
 });
-
 
 router.post('/v1/tarjeta-estilos/get-data', async (req, res) => {
   'use strict';
