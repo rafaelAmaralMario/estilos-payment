@@ -134,7 +134,7 @@ try {
     const httpClient = getProxyAgent(baseURL);
 
     const url = `${baseURL}/Estilos.ServiceTiendaVirtual/EstilosTiendaVirtual.svc?wsdl`;
-    const {cardAccount, cardNumber, cardPassword, billDate,tipoDeferido,installments,dniCustomerCode, billingAddress = {}, products = [], payment, FormaPago} = request;
+    const {cardAccount, cardNumber, cardPassword, billDate,tipoDeferido,installments,dniCustomerCode, billingAddress = {}, products = [], payment, FormaPago,isNiubiz = false, sunatSequential} = request;
     const {firstName, lastName, state, email, phoneNumber} = billingAddress;
     const formattedDate = billDate.split("T")[0];
     const getProductDetalle = (product,idx) => {
@@ -152,28 +152,28 @@ try {
             <tem:EstilosUserName>EstilosOnline</tem:EstilosUserName>
             <tem:EstilosStoreId>35</tem:EstilosStoreId>
             <tem:EstilosCashierId>1</tem:EstilosCashierId>
-            <tem:EstilosCardUsed>true</tem:EstilosCardUsed>
+            <tem:EstilosCardUsed>${isNiubiz ? false : true}</tem:EstilosCardUsed>
             <tem:XML>
                 <![CDATA[
                     <POS>
                         ${detalles}
-                         <Pagos NPago="1" FormaPago="${FormaPago}" Cuotas="${installments}" CodigoDocumento="16" NumeroDocumento="${cardNumber}" Valor="${payment.total}" AutorizadorTarjeta="${cardPassword}" SubTotal1="${payment.subTotal}" SubTotal2="${payment.totalWithoutTax}" ValorImpuesto="${payment.tax}" TipoDiferido="${tipoDeferido}" Cuenta="${cardAccount}" BancoEmite="1" />
-                        <Cliente IdCliente="${dniCustomerCode}" TipoId="1" Nombre1="${firstName} ${lastName}" DireccionDomicilio="${state}" TelefonoDomicilio1="${phoneNumber}" CorreoElectronico="${email}" />
-                        </POS>
+                         <Pagos NPago="1" ${isNiubiz ? "CodigoOperador='5'": ""}  FormaPago="${FormaPago}" Cuotas="${installments}" CodigoDocumento="16" NumeroDocumento="${isNiubiz ? "6010100103000009" : cardNumber}" Valor="${payment.total}" AutorizadorTarjeta="${cardPassword}" SubTotal1="${payment.subTotal}" SubTotal2="${payment.totalWithoutTax}" ValorImpuesto="${payment.tax}" TipoDiferido="${tipoDeferido}" Cuenta="${cardAccount}" BancoEmite="1" />
+                         <Cliente IdCliente="${dniCustomerCode}" TipoId="1" Nombre1="${firstName} ${lastName}" DireccionDomicilio="${state}" TelefonoDomicilio1="${phoneNumber}" CorreoElectronico="${email}" />
+                    </POS>
                 ]]>
             </tem:XML>
-            <tem:CardAccount>${cardAccount}</tem:CardAccount>
-            <tem:CardNumber>${cardNumber}</tem:CardNumber>
-            <tem:CardPassword>${cardPassword}</tem:CardPassword>
+            <tem:CardAccount>${isNiubiz ? "" : cardAccount}</tem:CardAccount>
+            <tem:CardNumber>${isNiubiz ? "6010100103000009" : cardNumber}</tem:CardNumber>
+            <tem:CardPassword>${isNiubiz ? "" : cardPassword}</tem:CardPassword>
             <tem:BillAmount>${payment.total}</tem:BillAmount>
             <tem:BillDate>${formattedDate}</tem:BillDate>
-            <tem:PaymentMode>${tipoDeferido}</tem:PaymentMode>
-            <tem:PaymentLength>${installments}</tem:PaymentLength>
+            <tem:PaymentMode>${isNiubiz ? "1" : tipoDeferido}</tem:PaymentMode>
+            <tem:PaymentLength>${isNiubiz ? "1" : installments}</tem:PaymentLength>
             <tem:EstilosBussinessId>1</tem:EstilosBussinessId>
             <tem:EstilosTerminalName>PCPRUEBA</tem:EstilosTerminalName>
             <tem:EstilosPrinterName>S\/N</tem:EstilosPrinterName>
             <tem:SunatSerie>1523</tem:SunatSerie>
-            <tem:SunatSequential>55042</tem:SunatSequential>
+            <tem:SunatSequential>${sunatSequential}</tem:SunatSequential>
             <tem:modoCaptura />
             <tem:TipoIdentificacion>1</tem:TipoIdentificacion>
             <tem:IdDocumentoCliente>${dniCustomerCode}</tem:IdDocumentoCliente>
