@@ -27,14 +27,14 @@ router.post('/v1/payment', async (req, res) => {
 
   try {
     let response = {};
-    const { cardAccount="", cardNumber="", cardPassword="1234", tipoDeferido = "1", installments="1", dniCustomerCode="", products, payment, FormaPago="3" } = customProperties;
+    const { cardAccount="", cardNumber="", cardPassword="1234", tipoDeferido = "1", installments="1", dniCustomerCode="", products, payment, FormaPago="3",paymentType } = customProperties;
     const estilosCardGatewayId = getEnvironmentVariable("TARJETA_ESTILOS_GATEWAY_ID");
     const sunatSequentialEnv = getEnvironmentVariable("SUNAT_SEQUENTIAL");
     const sunatSequentialResetEnv = getEnvironmentVariable("SUNAT_SEQUENTIAL_RESET");
     const parsedProducts = JSON.parse(products);
     const parsedPayment = JSON.parse(payment);
 
-    if (gatewayId === estilosCardGatewayId) {
+    if (paymentType === "TarjetaEstilos") {
 
       const estilosCardRequest = {
         cardAccount, 
