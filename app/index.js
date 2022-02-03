@@ -48,7 +48,8 @@ router.post('/v1/payment', async (req, res) => {
         payment: parsedPayment, 
         FormaPago, 
         billingAddress,
-        sunatSequential
+        sunatSequential,
+        orderId
       }
       
       response = await getTransactionEstilosCard(estilosCardRequest);
@@ -68,7 +69,8 @@ router.post('/v1/payment', async (req, res) => {
         FormaPago : "3", 
         billingAddress,
         sunatSequential,
-        isNiubiz: true
+        isNiubiz: true,
+        orderId
       }
       try {
         const transactionResponse = await getTransactionEstilosCard(estilosCardRequest);

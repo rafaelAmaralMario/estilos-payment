@@ -134,7 +134,7 @@ try {
     const httpClient = getProxyAgent(baseURL);
 
     const url = `${baseURL}/Estilos.ServiceTiendaVirtual/EstilosTiendaVirtual.svc?wsdl`;
-    const {cardAccount, cardNumber, cardPassword, billDate,tipoDeferido,installments,dniCustomerCode, billingAddress = {}, products = [], payment, FormaPago,isNiubiz = false, sunatSequential} = request;
+    const {cardAccount, cardNumber, cardPassword, billDate,tipoDeferido,installments,dniCustomerCode, billingAddress = {}, products = [], payment, FormaPago,isNiubiz = false, sunatSequential, orderId} = request;
     const {firstName, lastName, state, email, phoneNumber} = billingAddress;
     const formattedDate = billDate.split("T")[0];
     const getProductDetalle = (product,idx) => {
@@ -157,7 +157,7 @@ try {
                 <![CDATA[
                     <POS>
                         ${detalles}
-                         <Pagos NPago="1" ${isNiubiz ? "CodigoOperador='5'": ""}  FormaPago="${FormaPago}" Cuotas="${installments}" CodigoDocumento="16" NumeroDocumento="${isNiubiz ? "6010100103000009" : cardNumber}" Valor="${payment.total}" AutorizadorTarjeta="${cardPassword}" SubTotal1="${payment.subTotal}" SubTotal2="${payment.totalWithoutTax}" ValorImpuesto="${payment.tax}" TipoDiferido="${tipoDeferido}" Cuenta="${cardAccount}" BancoEmite="1" />
+                         <Pagos NPago="1" ${isNiubiz ? "CodigoOperador='5'": ""}  FormaPago="${FormaPago}" Cuotas="${installments}" CodigoDocumento="16" NumeroDocumento="${isNiubiz ? "6010100103000009" : cardNumber}" Valor="${payment.total}" AutorizadorTarjeta="${cardPassword}" SubTotal1="${payment.subTotal}" SubTotal2="${payment.totalWithoutTax}" ValorImpuesto="${payment.tax}" TipoDiferido="${tipoDeferido}" Cuenta="${cardAccount}" BancoEmite="1" Observaciones="${orderId}"/>
                          <Cliente IdCliente="${dniCustomerCode}" TipoId="1" Nombre1="${firstName} ${lastName}" DireccionDomicilio="${state}" TelefonoDomicilio1="${phoneNumber}" CorreoElectronico="${email}" />
                     </POS>
                 ]]>
