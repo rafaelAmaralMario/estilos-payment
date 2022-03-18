@@ -204,7 +204,7 @@ try {
                 }
             }
 
-        logger.debug(`MESSAJE: ${JSON.stringify(getError(message))}`);
+        logger.debug(`MESSAJE: ${JSON.stringify(JSON.stringify(transactionResponse))}`);
 
             return {
                 authorizationResponse: {
