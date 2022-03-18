@@ -24,7 +24,11 @@
 	},
 	"allowedUrls": [
 		"https://apitestenv.vnforapps.com",
-		"https://wap.nuestrafamilia.com.pe"
+		"https://wap.nuestrafamilia.com.pe",
+		"https://apiprod.vnforapps.com",
+		"https://wap.nuestrafamilia.com.pe:443",
+		"https://apitestenv.vnforapps.com:443",
+		"https://apiprod.vnforapps.com:443"
 	],
 	"description": "Server Side Extension for Payment",
 	"license": "SEE LICENSE IN LICENSE.TXT",
