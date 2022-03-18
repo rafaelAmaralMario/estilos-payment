@@ -131,19 +131,6 @@ try {
     const {cardNumber, cardPassword, billDate,tipoDeferido,installments,dniCustomerCode, billingAddress = {}, products = [], payment, FormaPago,isNiubiz = false, sunatSequential, orderId} = request;
     const {TarjetaCuenta:cardAccount}  = await getCardData({dniCustomerCode, card:cardNumber})
     const {firstName, lastName, state, email, phoneNumber} = billingAddress;
-    // TEST
-    return {
-        authorizationResponse: {
-            "responseCode": "1000",
-            "responseReason": "Pagamento Aprobado",
-            "responseDescription": "Pagamento Aprobado",
-            "authorizationCode": `${new Date().getTime()}-${orderId}`,
-            "hostTransactionId": `${new Date().getTime()}-${orderId}`
-        },
-        hostTimestamp: new Date().getTime()
-    }
-
-    //TEST
 
     const formattedDate = billDate.split("T")[0];
     const getProductDetalle = (product,idx) => {
