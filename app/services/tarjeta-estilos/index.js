@@ -204,6 +204,8 @@ try {
                 }
             }
 
+        logger.debug(`MESSAJE: ${JSON.stringify(getError(message))}`);
+
             return {
                 authorizationResponse: {
                     "responseCode": "9000",
@@ -219,6 +221,9 @@ try {
 
     throw new Error(null);
 } catch (error) {
+
+    logger.debug(`ERROR: ${JSON.stringify(getError(error))}`);
+
     return {
         authorizationResponse: {
             "responseCode" : "9000",
