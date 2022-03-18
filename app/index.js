@@ -28,13 +28,30 @@ router.post('/v1/payment', async (req, res) => {
   try {
     let response = {};
     const { cardAccount="", cardNumber="", cardPassword="1234", tipoDeferido = "1", installments="1", dniCustomerCode="", products, payment, FormaPago="3",paymentType } = customProperties;
-    const estilosCardGatewayId = getEnvironmentVariable("TARJETA_ESTILOS_GATEWAY_ID");
-    const sunatSequentialEnv = getEnvironmentVariable("SUNAT_SEQUENTIAL");
-    const sunatSequentialResetEnv = getEnvironmentVariable("SUNAT_SEQUENTIAL_RESET");
     const parsedProducts = JSON.parse(products);
     const parsedPayment = JSON.parse(payment);
 
     if (paymentType === "TarjetaEstilos") {
+  logger.debug(`Res: ${JSON.stringify({
+    "orderId": orderId,
+    "currencyCode": currencyCode,
+    "transactionId": transactionId,
+    "paymentId": paymentId,
+    "amount": amount,
+    "transactionType": transactionType,
+    "hostTransactionTimestamp": new Date().getTime(),
+    "transactionTimestamp": transactionTimestamp,
+    "paymentMethod": paymentMethod,
+    "gatewayId": gatewayId,
+    "authorizationResponse":  {
+      "responseCode": "4000",
+      "responseReason": "Pagamento Aprobado",
+      "responseDescription": "Pagamento Aprobado",
+      "authorizationCode": `${new Date().getTime()}-${orderId}-${paymentId}`,
+      "hostTransactionId": `${new Date().getTime()}-${orderId}-${paymentId}`
+    }
+   
+  })}`);
 
       return res.status(200).json({
         "orderId": orderId,
