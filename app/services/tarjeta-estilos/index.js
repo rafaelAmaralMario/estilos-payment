@@ -138,7 +138,7 @@ try {
             "responseReason": "Pagamento Aprobado",
             "responseDescription": "Pagamento Aprobado",
             "authorizationCode": `${new Date().getTime()}-${orderId}`,
-            "hostTransactionId": transactionId
+            "hostTransactionId": `${new Date().getTime()}-${orderId}`
         },
         hostTimestamp: new Date().getTime()
     }
