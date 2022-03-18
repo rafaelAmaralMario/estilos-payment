@@ -126,10 +126,25 @@ async function getTarifario(tarjeta) {
 async function getTransactionEstilosCard(request) {
 try {
 
+    
     const url = `${baseURL}/Estilos.ServiceTiendaVirtual/EstilosTiendaVirtual.svc?wsdl`;
     const {cardNumber, cardPassword, billDate,tipoDeferido,installments,dniCustomerCode, billingAddress = {}, products = [], payment, FormaPago,isNiubiz = false, sunatSequential, orderId} = request;
     const {TarjetaCuenta:cardAccount}  = await getCardData({dniCustomerCode, card:cardNumber})
     const {firstName, lastName, state, email, phoneNumber} = billingAddress;
+    // TEST
+    return {
+        authorizationResponse: {
+            "responseCode": "1000",
+            "responseReason": "Pagamento Aprobado",
+            "responseDescription": "Pagamento Aprobado",
+            "authorizationCode": `${new Date().getTime()}-${orderId}`,
+            "hostTransactionId": transactionId
+        },
+        hostTimestamp: new Date().getTime()
+    }
+
+    //TEST
+
     const formattedDate = billDate.split("T")[0];
     const getProductDetalle = (product,idx) => {
         const total = product.total - product.discount ;
