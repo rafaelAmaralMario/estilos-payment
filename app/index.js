@@ -32,29 +32,6 @@ router.post('/v1/payment', async (req, res) => {
     const parsedPayment = JSON.parse(payment);
 
     if (paymentType === "TarjetaEstilos") {
-  
-      return res.status(200).json({
-        "orderId": orderId,
-        "currencyCode": currencyCode,
-        "transactionId": transactionId,
-        "paymentId": paymentId,
-        "amount": amount,
-        "transactionType": transactionType,
-        "hostTransactionTimestamp": new Date().getTime(),
-        "transactionTimestamp": transactionTimestamp,
-        "paymentMethod": paymentMethod,
-        "gatewayId": gatewayId,
-        "authorizationResponse":  {
-          "responseCode": "1000",
-          "responseReason": "Pagamento Aprobado",
-          "responseDescription": "Pagamento Aprobado",
-          "authorizationCode": `${new Date().getTime()}-${orderId}-${paymentId}`,
-          "hostTransactionId": `${new Date().getTime()}-${orderId}-${paymentId}`,
-          additionalProperties : {
-            cardNumber,paymentType, tipoPago: "EN CUOTAS",numeroCuotas: "6"
-          }
-        }
-      })
 
       const estilosCardRequest = {
         cardAccount, 

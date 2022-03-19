@@ -192,22 +192,22 @@ try {
             const transactionId = transactionResponse["TransactionId"]
             const success = transactionResponse["Success"]
             const message = transactionResponse["Message"]
-            let tipoPago = '';
-            switch (tipoDeferido) {
-                case '1':
-                  tipoPago = 'SIN INTERES';
-                  break;
-      
-                case '2':
-                  tipoPago = 'EN CUOTAS';
-                  break;
-      
-                case '3':
-                  tipoPago = 'DIFERIDO 90';
-                  break;
-              }
-
             if (success !== "false") {
+                let tipoPago = '';
+                switch (tipoDeferido) {
+                    case '1':
+                      tipoPago = 'SIN INTERES';
+                      break;
+          
+                    case '2':
+                      tipoPago = 'EN CUOTAS';
+                      break;
+          
+                    case '3':
+                      tipoPago = 'DIFERIDO 90';
+                      break;
+                  }
+                  
                 return {
                     authorizationResponse: {
                         "responseCode": "1000",
