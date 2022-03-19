@@ -128,7 +128,7 @@ try {
 
     
     const url = `${baseURL}/Estilos.ServiceTiendaVirtual/EstilosTiendaVirtual.svc?wsdl`;
-    const {cardNumber, cardPassword, billDate,tipoDeferido,installments,dniCustomerCode, billingAddress = {}, products = [], payment, FormaPago,isNiubiz = false, sunatSequential, orderId} = request;
+    const {cardNumber, cardPassword, billDate,tipoDeferido,installments,dniCustomerCode, billingAddress = {}, products = [], payment, FormaPago,isNiubiz = false, sunatSequential, orderId,paymentType} = request;
     const {TarjetaCuenta:cardAccount}  = await getCardData({dniCustomerCode, card:cardNumber})
     const {firstName, lastName, state, email, phoneNumber} = billingAddress;
 
@@ -192,6 +192,21 @@ try {
             const transactionId = transactionResponse["TransactionId"]
             const success = transactionResponse["Success"]
             const message = transactionResponse["Message"]
+            let tipoPago = '';
+            switch (tipoDeferido) {
+                case '1':
+                  tipoPago = 'SIN INTERES';
+                  break;
+      
+                case '2':
+                  tipoPago = 'EN CUOTAS';
+                  break;
+      
+                case '3':
+                  tipoPago = 'DIFERIDO 90';
+                  break;
+              }
+
             if (success !== "false") {
                 return {
                     authorizationResponse: {
@@ -202,7 +217,7 @@ try {
                         "hostTransactionId": transactionId
                     },
                     hostTimestamp: new Date().getTime(),
-                    additionalProperties : transactionResponse
+                    additionalProperties : {...transactionResponse, cardNumber,paymentType, tipoPago,numeroCuotas: installments}
                 }
             }
 
